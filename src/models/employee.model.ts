@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const EmployeeSchema = new mongoose.Schema(
     {
-        firstName: {
+        first_name: {
             type: String,
             required: true,
         },
-        lastName: {
+        last_name: {
             type: String,
             required: true,
         },
@@ -14,7 +14,7 @@ const EmployeeSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        phone: {
+        number: {
             type: String,
             required: true
         },

@@ -12,16 +12,16 @@ class EmployeeSwagger {
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "firstName": {
+                                "first_name": {
                                     "type": "string",
                                 },
-                                "lastName": {
+                                "last_name": {
                                     "type": "string",
                                 },
                                 "email": {
                                     "type": "string",
                                 },
-                                "phone": {
+                                "number": {
                                     "type": "string",
                                 },
                                 "gender": {
@@ -131,16 +131,16 @@ class EmployeeSwagger {
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "firstName": {
+                                "first_name": {
                                     "type": "string",
                                 },
-                                "lastName": {
+                                "last_name": {
                                     "type": "string",
                                 },
                                 "email": {
                                     "type": "integer",
                                 },
-                                "phone": {
+                                "number": {
                                     "type": "integer",
                                 },
                                 "gender": {
@@ -294,16 +294,16 @@ class EmployeeSwagger {
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "firstName": {
+                                "first_name": {
                                     "type": "string",
                                 },
-                                "lastName": {
+                                "last_name": {
                                     "type": "string",
                                 },
                                 "email": {
                                     "type": "integer",
                                 },
-                                "phone": {
+                                "number": {
                                     "type": "integer",
                                 },
                                 "gender": {

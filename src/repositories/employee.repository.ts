@@ -12,7 +12,7 @@ class EmployeeRepository {
     public static async addEmployee(requestBody: IEmployee): Promise<any> {
         try {
 
-            const { firstName, lastName, email, phone, gender } = requestBody;
+            const { first_name, last_name, email, number, gender } = requestBody;
 
             const isEmailExists = await Employee.findOne({ email: email });
 
@@ -26,10 +26,10 @@ class EmployeeRepository {
             }
 
             const data = new Employee({
-                firstName,
-                lastName,
+                first_name,
+                last_name,
                 email,
-                phone,
+                number,
                 gender
             });
 

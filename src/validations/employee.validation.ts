@@ -4,10 +4,10 @@ const employeeValidation = {
 
     addEmployee: {
         [Segments.BODY]: Joi.object().keys({
-            firstName: Joi.string().required(),
-            lastName: Joi.string().required(),
+            first_name: Joi.string().required(),
+            last_name: Joi.string().required(),
             email: Joi.string().email().required(),
-            phone: Joi.string().required(),
+            number: Joi.string().required(),
             gender: Joi.string().required()
         })
     },
@@ -26,9 +26,9 @@ const employeeValidation = {
             empId: Joi.string().required()
         },
         [Segments.BODY]: Joi.object().keys({
-            firstName: Joi.string(),
-            lastName: Joi.string(),
-            phone: Joi.string(),
+            first_name: Joi.string(),
+            last_name: Joi.string(),
+            number: Joi.string(),
             gender: Joi.string()
         })
     },
