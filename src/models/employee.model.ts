@@ -22,6 +22,10 @@ const EmployeeSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        photo: {
+            type: String,
+            required: false
+        },
         createdAt: {
             type: Date,
             required: true,

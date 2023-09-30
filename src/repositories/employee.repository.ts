@@ -1,6 +1,7 @@
 import { Employee } from "../models/employee.model";
 import { IResponseBody } from "../interfaces/common.interface";
 import { IEmployee } from "../interfaces/employee.interface";
+import { CommonConfig } from "../config/common";
 
 class EmployeeRepository {
 
@@ -13,6 +14,8 @@ class EmployeeRepository {
         try {
 
             const { first_name, last_name, email, number, gender } = requestBody;
+
+            const dummyImage = CommonConfig.dummyImage
 
             const isEmailExists = await Employee.findOne({ email: email });
 
@@ -30,7 +33,8 @@ class EmployeeRepository {
                 last_name,
                 email,
                 number,
-                gender
+                gender,
+                photo: dummyImage,
             });
 
             const insertedEmployee = await data.save();
@@ -57,7 +61,7 @@ class EmployeeRepository {
             const pageNumber = parseInt(page) || 1
             const pageSize = 5
             const skips = pageSize * (pageNumber - 1);
-            const sort: any = { createdAt: -1 }
+            const sort: any = { _id: -1 }
 
             const data = await Employee.find().skip(skips).limit(pageSize).sort(sort);
             const totalCount = await Employee.countDocuments();
