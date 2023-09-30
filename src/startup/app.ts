@@ -20,7 +20,7 @@ export default (app: Application) => {
     app.use(cors());
     app.use(express.urlencoded({ extended: true }));
     /*swagger config*/
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+    app.use(`/${SERVER_PREFIX}/api-docs`, swaggerUi.serve, swaggerUi.setup(swaggerDoc));
     app.use(cookieParser());
 
     app.use(`/${SERVER_PREFIX}`, indexRouter);

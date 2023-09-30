@@ -73,6 +73,13 @@ class EmployeeSwagger {
                     "description": "Page number",
                     "required": true,
                     "type": "integer"
+                },
+                {
+                    "name": "search",
+                    "in": "query",
+                    "description": "Search value",
+                    "required": false,
+                    "type": "string"
                 }
             ],
             "operationId": "get-all-employees",

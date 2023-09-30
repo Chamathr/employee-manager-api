@@ -66,7 +66,8 @@ class EmployeeController {
     public static async getEmployees(req: Request, res: Response): Promise<any> {
         try {
             const page: any = req?.query?.page
-            const response = await EmployeeService.getEmployees(page)
+            const search: any = req?.query?.search && req?.query?.search !== 'undefined'? req?.query?.search : null
+            const response = await EmployeeService.getEmployees(page, search)
             const responseBody: IResponseBody = {
                 status: response?.status,
                 message: response?.message,
@@ -80,7 +81,7 @@ class EmployeeController {
                 message: 'Error',
                 data: "Something went wrong"
             }
-            console.log(`error: ${error.message}`)
+            console.log(`error: ${error}`)
             res.status(500).json(responseBody);
         }
     }

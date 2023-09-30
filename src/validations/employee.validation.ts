@@ -13,7 +13,8 @@ const employeeValidation = {
     },
     getEmployees: {
         [Segments.QUERY]: {
-            page: Joi.string().required()
+            page: Joi.string().required(),
+            search: Joi.string().allow(null)
         }
     },
     getEmployeeById: {

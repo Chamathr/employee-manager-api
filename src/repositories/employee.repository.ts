@@ -56,15 +56,24 @@ class EmployeeRepository {
      * get employees repository
      * @returns {IResponseBody} resposeBody
      */
-    public static async getEmployees(page: string): Promise<any> {
+    public static async getEmployees(page: string, search: string | null): Promise<any> {
         try {
             const pageNumber = parseInt(page) || 1
-            const pageSize = 5
+            const pageSize = 10
             const skips = pageSize * (pageNumber - 1);
             const sort: any = { _id: -1 }
 
-            const data = await Employee.find().skip(skips).limit(pageSize).sort(sort);
-            const totalCount = await Employee.countDocuments();
+            const filter: any = search ? {
+                $or: [
+                  { first_name: { $regex: search, $options: 'i' } },
+                  { last_name: { $regex: search, $options: 'i' } }
+                ]
+              }
+              :
+              null
+
+            const data = await Employee.find(filter).skip(skips).limit(pageSize).sort(sort);
+            const totalCount = await Employee.countDocuments(filter);
             const totalPages = Math.ceil(totalCount / pageSize);
 
             const responseBody: IResponseBody = {

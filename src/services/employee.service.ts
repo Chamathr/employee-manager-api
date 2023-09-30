@@ -21,12 +21,12 @@ class EmployeeService {
 
     /**
      * get employees service
-     * @param {string} page
+     * @param {any} page
      * @returns {IResponseBody} responseBody
      */
-    public static async getEmployees(page: string): Promise<any> {
+    public static async getEmployees(page: string, search: string | null): Promise<any> {
         try {
-            const response: IResponseBody = await EmployeeRepository.getEmployees(page)
+            const response: IResponseBody = await EmployeeRepository.getEmployees(page, search)
             return response
         }
         catch (error) {
