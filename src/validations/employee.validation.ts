@@ -30,6 +30,7 @@ const employeeValidation = {
             first_name: Joi.string(),
             last_name: Joi.string(),
             number: Joi.string(),
+            email: Joi.string(),
             gender: Joi.string()
         })
     },
