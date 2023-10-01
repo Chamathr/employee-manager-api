@@ -145,13 +145,13 @@ class EmployeeSwagger {
                                     "type": "string",
                                 },
                                 "email": {
-                                    "type": "integer",
+                                    "type": "string",
                                 },
                                 "number": {
-                                    "type": "integer",
+                                    "type": "string",
                                 },
                                 "gender": {
-                                    "type": "integer",
+                                    "type": "string",
                                 }
                             },
                         },
