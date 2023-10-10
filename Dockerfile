@@ -1,9 +1,10 @@
 # Use an official Node.js runtime as a parent image
 FROM node:18-alpine
 
-#)ptimize the installation of Node.js packages 
+#Optimize the installation of Node.js packages 
 RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
+#Install globle dependancies
 RUN npm i -g ts-node typescript nodemon
 
 # Set the working directory to /app
