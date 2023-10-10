@@ -52,28 +52,26 @@ describe('Employee Controller', () => {
     expect(res.status).toHaveBeenCalledWith(200);
   });
 
-  // test('should check health od the service', async () => {
+  test('add employee', async () => {
 
-  //   const req: Request  = {
-  //     body: {
-  //       first_name: 'John',
-  //       last_name: 'Doe',
-  //       email: 'john.doe@example.com',
-  //       number: '0701111111',
-  //       gender: 'Male'
-  //     }
-  //   } as Request
+    const req: Request  = {
+      body: {
+        first_name: 'John',
+        last_name: 'Doe',
+        email: 'john.doe@example.com',
+        number: '0701111111',
+        gender: 'Male'
+      }
+    } as Request
 
-  //   const res: Response = {
-  //     status: jest.fn().mockReturnThis(),
-  //     json: jest.fn(),
-  //   } as unknown as Response
+    const res: Response = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    } as unknown as Response
 
-  //   await EmployeeController.addEmployee(req, res);
+    await EmployeeController.addEmployee(req, res);
 
-  //   expect(res.status).toHaveBeenCalledWith(200);
-  // });
-
-
+    expect(res.status).toHaveBeenCalledWith(201);
+  });
 
 });

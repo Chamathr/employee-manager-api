@@ -4,6 +4,8 @@ FROM node:18-alpine
 #)ptimize the installation of Node.js packages 
 RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
+RUN npm i -g ts-node typescript nodemon
+
 # Set the working directory to /app
 WORKDIR /app
 
