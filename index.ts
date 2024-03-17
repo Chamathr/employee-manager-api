@@ -1,10 +1,11 @@
 import express from 'express';
-require('express-async-errors');
+import 'express-async-errors';
 import loadApp from './src/startup/app';
 import mongoDbConnection from './src/startup/database';
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
-import  mongoose from "mongoose"
+import mongoose from 'mongoose';
 
 loadApp(app);
 mongoDbConnection.getInstance();
@@ -15,7 +16,7 @@ app.listen(port, () => {
   console.log(`App is running on port ${port}.`);
 });
 
-process.on('exit', function (){
+process.on('exit', function () {
   mongoose.disconnect();
   console.log('Goodbye!');
 });
@@ -23,5 +24,3 @@ process.on('exit', function (){
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
 });
-
-  
