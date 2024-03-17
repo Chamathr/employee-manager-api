@@ -11,14 +11,18 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --max-warnings=0"
-  },  
   "husky": {
     "hooks": {
-      "pre-commit": "eslint ."
+      "pre-commit": "lint-staged"
     }
-  },  
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint — fix",
+      "prettier — write",
+      "git add"
+    ]
+  },
   "author": "Chamath Ranaweera",
   "license": "ISC",
   "devDependencies": {
