@@ -8,7 +8,7 @@ class IndexController {
      * @param {Request} req 
      * @param {Response} res 
      */
-    public static async healthcheck(req: Request, res: Response): Promise<any> {
+    public static async healthcheck(req: Request, res: Response): Promise<void> {
         try {
             const responseBody: IResponseBody = {
                 status: 200,

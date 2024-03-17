@@ -1,6 +1,6 @@
-import {Request, Response, NextFunction} from 'express';
+import {Request, Response} from 'express';
 
-export function errors(error:Error , req:Request , res: Response, next: NextFunction){
+export function errors(error:Error , req:Request , res: Response){
     const errorBody = {
         status: 500,
         message: 'failed',

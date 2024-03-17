@@ -1,8 +1,9 @@
 import express from 'express';
-require('express-async-errors');
+import 'express-async-errors';
 import loadApp from './src/startup/app';
 import mongoDbConnection from './src/startup/database';
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
 import  mongoose from "mongoose"
 

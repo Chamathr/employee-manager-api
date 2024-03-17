@@ -9,12 +9,13 @@ class EmployeeService {
      * @param {IEmployee} requestBody 
      * @returns {IResponseBody} responseBody
      */
-    public static async addEmployee(requestBody: IEmployee): Promise<any> {
+    public static async addEmployee(requestBody: IEmployee): Promise<IResponseBody> {
         try {
             const response: IResponseBody = await EmployeeRepository.addEmployee(requestBody)
             return response
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
@@ -24,12 +25,13 @@ class EmployeeService {
      * @param {any} page
      * @returns {IResponseBody} responseBody
      */
-    public static async getEmployees(page: string, search: string | null): Promise<any> {
+    public static async getEmployees(page: string, search: string | null): Promise<IResponseBody> {
         try {
             const response: IResponseBody = await EmployeeRepository.getEmployees(page, search)
             return response
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
@@ -39,12 +41,13 @@ class EmployeeService {
      * @param {string} id
      * @returns {IResponseBody} responseBody
      */
-     public static async getEmployeeById(id: string): Promise<any> {
+     public static async getEmployeeById(id: string): Promise<IResponseBody> {
         try {
             const response: IResponseBody = await EmployeeRepository.getEmployeeById(id)
             return response
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
@@ -55,12 +58,13 @@ class EmployeeService {
      * @param {object} requestBody
      * @returns {IResponseBody} responseBody
      */
-    public static async updateEmployee(id: string, requestBody: object): Promise<any> {
+    public static async updateEmployee(id: string, requestBody: object): Promise<IResponseBody> {
         try {
             const response: IResponseBody = await EmployeeRepository.updateEmployee(id, requestBody)
             return response
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
@@ -70,12 +74,13 @@ class EmployeeService {
      * @param {string} id
      * @returns {IResponseBody} responseBody
      */
-    public static async deleteEmployee(id: string): Promise<any> {
+    public static async deleteEmployee(id: string): Promise<IResponseBody> {
         try {
             const response: IResponseBody = await EmployeeRepository.deleteEmployee(id)
             return response
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }

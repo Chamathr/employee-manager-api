@@ -1,6 +1,6 @@
 import { Joi, Segments } from 'celebrate'
 
-const employeeValidation = {
+export const employee = {
 
     addEmployee: {
         [Segments.BODY]: Joi.object().keys({
@@ -40,5 +40,3 @@ const employeeValidation = {
         }
     }
 }
-
-module.exports = { employeeValidation }

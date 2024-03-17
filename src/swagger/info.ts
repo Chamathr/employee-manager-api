@@ -1,6 +1,7 @@
 import { IndexSwagger } from "./index.path"
 import { EmployeeSwagger } from "./employee.path"
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config();
 
 const serverPrefix = process.env.SERVER_PREFIX
 const baseUrl = process.env.BASE_URL

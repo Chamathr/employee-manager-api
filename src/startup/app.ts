@@ -1,14 +1,15 @@
 import express, { Application } from 'express';
-const cors = require('cors');
 import { employeeRouter } from '../routes/employee.route';
 import { indexRouter } from '../routes/index.route';
 import { errors } from '../middlewares/errors';
-const helmet = require("helmet")
-const cookieParser = require('cookie-parser')
-const logger = require('morgan')
-const swaggerUi = require('swagger-ui-express')
+import helmet from "helmet";
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import swaggerUi from 'swagger-ui-express';
+import cors from 'cors';
 import { swaggerDoc } from '../swagger/info';
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default (app: Application) => {
 

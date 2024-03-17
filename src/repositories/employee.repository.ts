@@ -1,6 +1,6 @@
 import { Employee } from "../models/employee.model";
 import { IResponseBody } from "../interfaces/common.interface";
-import { IEmployee } from "../interfaces/employee.interface";
+import { IEmployee, IFilter, ISort } from "../interfaces/employee.interface";
 import { CommonConfig } from "../config/common";
 
 class EmployeeRepository {
@@ -10,7 +10,7 @@ class EmployeeRepository {
      * @param {IEmployee} requestBody 
      * @returns {IResponseBody} responseBody
      */
-    public static async addEmployee(requestBody: IEmployee): Promise<any> {
+    public static async addEmployee(requestBody: IEmployee): Promise<IResponseBody> {
         try {
 
             const { first_name, last_name, email, number, gender } = requestBody;
@@ -48,6 +48,7 @@ class EmployeeRepository {
 
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
@@ -56,22 +57,20 @@ class EmployeeRepository {
      * get employees repository
      * @returns {IResponseBody} resposeBody
      */
-    public static async getEmployees(page: string, search: string | null): Promise<any> {
+    public static async getEmployees(page: string, search: string | null): Promise<IResponseBody> {
         try {
             const pageNumber = parseInt(page) || 1
             const pageSize = 10
             const skips = pageSize * (pageNumber - 1);
-            const sort: any = { _id: -1 }
-
-            const filter: any = search ? {
+            const sort: ISort= { _id: -1 }
+            
+            const filter: IFilter | null = search ? {
                 $or: [
-                  { first_name: { $regex: search, $options: 'i' } },
-                  { last_name: { $regex: search, $options: 'i' } }
+                    { first_name: { $regex: search, $options: 'i' } },
+                    { last_name: { $regex: search, $options: 'i' } }
                 ]
-              }
-              :
-              null
-
+            } : {};
+            
             const data = await Employee.find(filter).skip(skips).limit(pageSize).sort(sort);
             const totalCount = await Employee.countDocuments(filter);
             const totalPages = Math.ceil(totalCount / pageSize);
@@ -89,6 +88,7 @@ class EmployeeRepository {
             return responseBody
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
@@ -98,7 +98,7 @@ class EmployeeRepository {
      * @param {string} id 
      * @returns {IResponseBody} responseBody
      */
-    public static async getEmployeeById(id: string): Promise<any> {
+    public static async getEmployeeById(id: string): Promise<IResponseBody> {
         try {
             const data = await Employee.findOne({ _id: id });
             if (!data) {
@@ -117,6 +117,7 @@ class EmployeeRepository {
             return responseBody
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
@@ -127,7 +128,7 @@ class EmployeeRepository {
     * @param {object} requestBody
     * @returns {IResponseBody} responseBody
     */
-    public static async updateEmployee(id: string, requestBody: object): Promise<any> {
+    public static async updateEmployee(id: string, requestBody: object): Promise<IResponseBody> {
         try {
             const isDataExists = await Employee.findOne({ _id: id });
             if (!isDataExists) {
@@ -149,6 +150,7 @@ class EmployeeRepository {
             return responseBody
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
@@ -158,7 +160,7 @@ class EmployeeRepository {
     * @param {string} id 
     * @returns {IResponseBody} responseBody
     */
-    public static async deleteEmployee(id: string): Promise<any> {
+    public static async deleteEmployee(id: string): Promise<IResponseBody> {
         try {
             const isDataExists = await Employee.findOne({ _id: id });
             if (!isDataExists) {
@@ -180,6 +182,7 @@ class EmployeeRepository {
             return responseBody
         }
         catch (error) {
+            console.log("Error", error)
             throw error
         }
     }
