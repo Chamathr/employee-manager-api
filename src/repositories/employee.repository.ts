@@ -121,7 +121,7 @@ class EmployeeRepository {
    * @param {object} requestBody
    * @returns {IResponseBody} responseBody
    */
-  public static async updateEmployee(id: any, requestBody: object): Promise<IResponseBody> {
+  public static async updateEmployee(id: string, requestBody: object): Promise<IResponseBody> {
     try {
       const isDataExists = await Employee.findOne({ _id: id });
       if (!isDataExists) {
