@@ -11,18 +11,7 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier": "prettier src/**/*{.js,ts,tsx} --write",
-    "pre-commit": "npm run lint:staged"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": ".husky/_/pre-commit"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+    "pre-commit": "npm run lint && npm run prettier"
   },
   "author": "Chamath Ranaweera",
   "license": "ISC",
