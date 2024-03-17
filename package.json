@@ -12,8 +12,13 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier": "prettier src/**/*{.js,ts,tsx} --write"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "lint-staged": {
-    "*.js": [
+    "*.ts": [
       "eslint — fix",
       "prettier — write",
       "git add"
