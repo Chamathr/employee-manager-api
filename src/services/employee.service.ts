@@ -10,6 +10,7 @@ class EmployeeService {
    */
   public static async addEmployee(requestBody: IEmployee): Promise<IResponseBody> {
     try {
+        
       const response: IResponseBody = await EmployeeRepository.addEmployee(requestBody);
       return response;
     } catch (error) {
