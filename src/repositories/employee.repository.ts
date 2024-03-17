@@ -123,6 +123,7 @@ class EmployeeRepository {
    */
   public static async updateEmployee(id: string, requestBody: object): Promise<IResponseBody> {
     try {
+        
       const isDataExists = await Employee.findOne({ _id: id });
       if (!isDataExists) {
         const responseBody: IResponseBody = {
