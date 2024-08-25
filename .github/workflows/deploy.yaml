@@ -48,13 +48,13 @@ jobs:
               docker rm employee-manager-api
             fi
 
-            # Run the new container
+            # Run the new container with environment variables
             echo "Starting new container..."
             docker run -d --name employee-manager-api \
               -p 80:8000 \
-              -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
-              -e BASE_URL=${{ secrets.BASE_URL }} \
-              -e SERVER_PREFIX=${{ secrets.SERVER_PREFIX }} \
-              -e PORT=${{ secrets.PORT }} \
-              -e DUMMY_IMAGE=${{ secrets.DUMMY_IMAGE }} \
+              -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+              -e BASE_URL="${{ secrets.BASE_URL }}" \
+              -e SERVER_PREFIX="${{ secrets.SERVER_PREFIX }}" \
+              -e PORT="${{ secrets.PORT }}" \
+              -e DUMMY_IMAGE="${{ secrets.DUMMY_IMAGE }}" \
               chamathranaweera/employee-manager-api:prod
