@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main  # This specifies that the workflow runs on a push to the `main` branch
+      - main
 
 jobs:
   deploy:
@@ -52,9 +52,9 @@ jobs:
             echo "Starting new container..."
             docker run -d --name employee-manager-api \
               -p 80:8000 \
-              -e DATABASE_URL="${secrets.DATABASE_URL}" \
-              -e BASE_URL="${secrets.BASE_URL}" \
-              -e SERVER_PREFIX="${secrets.SERVER_PREFIX}" \
-              -e PORT="${secrets.PORT}" \
-              -e DUMMY_IMAGE="${secrets.DUMMY_IMAGE}" \
+              -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
+              -e BASE_URL=${{ secrets.BASE_URL }} \
+              -e SERVER_PREFIX=${{ secrets.SERVER_PREFIX }} \
+              -e PORT=${{ secrets.PORT }} \
+              -e DUMMY_IMAGE=${{ secrets.DUMMY_IMAGE }} \
               chamathranaweera/employee-manager-api:prod
