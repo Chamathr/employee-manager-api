@@ -1,14 +1,12 @@
-name: Deploy to EC2
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      BASE_URL: ${{ secrets.BASE_URL }}
+      SERVER_PREFIX: ${{ secrets.SERVER_PREFIX }}
+      PORT: ${{ secrets.PORT }}
+      DUMMY_IMAGE: ${{ secrets.DUMMY_IMAGE }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -52,9 +50,9 @@ jobs:
             echo "Starting new container..."
             docker run -d --name employee-manager-api \
               -p 80:8000 \
-              -e DATABASE_URL=${{ env.DATABASE_URL }} \
-              -e BASE_URL=${{ env.BASE_URL }} \
-              -e SERVER_PREFIX=${{ env.SERVER_PREFIX }} \
-              -e PORT=${{ env.PORT }} \
-              -e DUMMY_IMAGE=${{ env.DUMMY_IMAGE }} \
+              -e DATABASE_URL="${DATABASE_URL}" \
+              -e BASE_URL="${BASE_URL}" \
+              -e SERVER_PREFIX="${SERVER_PREFIX}" \
+              -e PORT="${PORT}" \
+              -e DUMMY_IMAGE="${DUMMY_IMAGE}" \
               chamathranaweera/employee-manager-api:prod
