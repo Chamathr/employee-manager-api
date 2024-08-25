@@ -1,12 +1,14 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # This specifies that the workflow runs on a push to the `main` branch
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      BASE_URL: ${{ secrets.BASE_URL }}
-      SERVER_PREFIX: ${{ secrets.SERVER_PREFIX }}
-      PORT: ${{ secrets.PORT }}
-      DUMMY_IMAGE: ${{ secrets.DUMMY_IMAGE }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
