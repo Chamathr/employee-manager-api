@@ -39,6 +39,12 @@ jobs:
           port: 22
           script: |
             docker pull chamathranaweera/employee-manager-api:dev
-            docker stop employee-manager-api || true
-            docker rm employee-manager-api || true
+
+            # Check if the container exists and stop and remove it if it does
+            if [ $(docker ps -aq -f name=employee-manager-api) ]; then
+              docker stop employee-manager-api
+              docker rm employee-manager-api
+            fi
+
+            # Run the new container
             docker run -d --name employee-manager-api -p 80:8000 chamathranaweera/employee-manager-api:dev
